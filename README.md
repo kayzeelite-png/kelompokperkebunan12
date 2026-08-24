@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>FarmLife 🌱</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,7 +16,7 @@
 
 :root{
     --green:#22c55e;
-    --dark-green:#15803d;
+    --darkgreen:#15803d;
     --bg:#f0fdf4;
     --card:#ffffff;
     --text:#172033;
@@ -35,518 +37,1170 @@ body.dark{
     --muted:#cbd5e1;
 }
 
-header{
-    background:var(--card);
-    padding:15px 5%;
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen{
+
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #166534,
+        #22c55e,
+        #86efac
+    );
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:9999;
+}
+
+.login-box{
+
+    width:420px;
+    max-width:100%;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+    0 20px 60px #0005;
+
+    text-align:center;
+}
+
+.login-logo{
+
+    font-size:65px;
+    margin-bottom:10px;
+}
+
+.login-box h1{
+
+    color:#15803d;
+    margin-bottom:8px;
+}
+
+.login-box p{
+
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.login-input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #d1d5db;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.login-input:focus{
+
+    border-color:#22c55e;
+}
+
+.login-button{
+
+    width:100%;
+
+    border:0;
+
+    padding:14px;
+
+    background:#22c55e;
+
+    color:white;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.login-button:hover{
+
+    background:#16a34a;
+}
+
+.login-info{
+
+    margin-top:15px;
+
+    font-size:13px;
+
+    color:#64748b;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    background:var(--card);
+
+    padding:15px 5%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
     position:sticky;
+
     top:0;
+
     z-index:1000;
+
     box-shadow:0 3px 15px #0002;
 }
 
 .logo{
+
     font-size:25px;
+
     font-weight:bold;
+
     color:#22c55e;
 }
 
 .logo span{
+
     color:var(--text);
 }
 
 .player-info{
+
     display:flex;
+
     gap:10px;
+
     flex-wrap:wrap;
 }
 
 .stat{
+
     background:var(--bg);
+
     padding:8px 12px;
+
     border-radius:12px;
+
     font-weight:bold;
 }
 
+
+/* =========================
+   LAYOUT
+========================= */
+
 .layout{
+
     display:flex;
-    min-height:calc(100vh - 70px);
+
+    min-height:
+    calc(100vh - 70px);
 }
 
 .sidebar{
+
     width:230px;
+
     background:#166534;
+
     padding:15px;
+
     flex-shrink:0;
 }
 
 .sidebar button{
+
     width:100%;
+
     background:transparent;
+
     border:0;
+
     color:white;
+
     text-align:left;
+
     padding:12px;
+
     margin-bottom:5px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     font-weight:bold;
 }
 
 .sidebar button:hover,
 .sidebar button.active{
+
     background:#22c55e;
 }
 
 .main{
+
     flex:1;
+
     padding:25px;
 }
 
 .page{
+
     display:none;
 }
 
 .page.active{
+
     display:block;
 }
 
+
+/* =========================
+   GENERAL
+========================= */
+
 .page-title{
+
     margin-bottom:25px;
 }
 
 .page-title h1{
+
     font-size:32px;
+
     margin-bottom:7px;
 }
 
 .page-title p{
+
     color:var(--muted);
 }
 
 .card{
+
     background:var(--card);
+
     border-radius:18px;
+
     padding:20px;
+
     box-shadow:0 7px 20px #0001;
 }
 
 .grid{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:20px;
 }
 
+
+/* =========================
+   HOME
+========================= */
+
 .welcome{
-    background:linear-gradient(135deg,#16a34a,#4ade80);
+
+    background:
+    linear-gradient(
+        135deg,
+        #16a34a,
+        #4ade80
+    );
+
     color:white;
+
     border-radius:25px;
+
     padding:35px;
+
     margin-bottom:25px;
 }
 
 .welcome h1{
+
     font-size:38px;
+
     margin-bottom:10px;
 }
 
 .quick-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:15px;
 }
 
 .quick{
+
     background:var(--card);
+
     border-radius:18px;
+
     padding:20px;
+
     text-align:center;
+
     cursor:pointer;
+
     box-shadow:0 5px 15px #0001;
 }
 
 .quick:hover{
+
     transform:translateY(-4px);
 }
 
 .quick .emoji{
+
     font-size:40px;
+
     margin-bottom:8px;
 }
 
+
+/* =========================
+   WEATHER
+========================= */
+
 .weather{
-    background:linear-gradient(135deg,#60a5fa,#38bdf8);
+
+    background:
+    linear-gradient(
+        135deg,
+        #60a5fa,
+        #38bdf8
+    );
+
     color:white;
+
     border-radius:18px;
+
     padding:20px;
+
     margin-bottom:20px;
 }
 
+
+/* =========================
+   FARM
+========================= */
+
 .farm{
+
     background:#a16207;
+
     padding:20px;
+
     border-radius:20px;
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:15px;
 }
 
 .plot{
+
     height:150px;
+
     background:#78350f;
+
     border:4px solid #92400e;
+
     border-radius:15px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
     color:white;
+
     cursor:pointer;
 }
 
 .plot:hover{
+
     filter:brightness(1.15);
 }
 
 .plot .plant{
+
     font-size:48px;
 }
 
 .timer{
+
     font-size:12px;
+
     margin-top:5px;
 }
 
+
+/* =========================
+   ITEMS
+========================= */
+
 .item{
+
     background:var(--card);
+
     border-radius:18px;
+
     padding:20px;
+
     box-shadow:0 6px 18px #0001;
 }
 
 .item-icon{
+
     font-size:55px;
+
     margin-bottom:10px;
 }
 
 .item p{
+
     color:var(--muted);
+
     margin:8px 0;
 }
 
 .action{
+
     border:0;
+
     padding:10px 15px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     font-weight:bold;
 }
 
 .primary{
+
     background:#22c55e;
+
     color:white;
 }
 
 .danger{
+
     background:#ef4444;
+
     color:white;
 }
 
+
+/* =========================
+   INVENTORY
+========================= */
+
 .inventory-grid{
+
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+
+    grid-template-columns:
+    repeat(5,1fr);
+
     gap:15px;
 }
 
 .inventory-item{
+
     background:var(--card);
+
     border-radius:15px;
+
     padding:20px;
+
     text-align:center;
 }
 
 .inventory-item .emoji{
+
     font-size:45px;
 }
 
 .inventory-item strong{
+
     display:block;
+
     margin-top:8px;
+
     font-size:22px;
 }
 
+
+/* =========================
+   MARKET
+========================= */
+
 .market-table{
+
     width:100%;
+
     border-collapse:collapse;
 }
 
 .market-table th,
 .market-table td{
+
     padding:14px;
-    border-bottom:1px solid #cbd5e1;
+
+    border-bottom:
+    1px solid #cbd5e1;
+
     text-align:left;
 }
 
+
+/* =========================
+   ANIMAL
+========================= */
+
 .animal{
+
     text-align:center;
 }
 
 .animal-icon{
+
     font-size:70px;
+
     margin-bottom:10px;
 }
 
+
+/* =========================
+   POND
+========================= */
+
 .pond{
+
     min-height:350px;
-    background:linear-gradient(#38bdf8,#0284c7);
+
+    background:
+    linear-gradient(
+        #38bdf8,
+        #0284c7
+    );
+
     border-radius:25px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
     color:white;
+
     text-align:center;
 }
 
 .fish{
+
     font-size:100px;
 }
 
+
+/* =========================
+   QUEST
+========================= */
+
 .quest{
+
     background:var(--card);
+
     padding:20px;
+
     border-radius:18px;
+
     margin-bottom:15px;
 }
 
 .progress{
+
     height:10px;
+
     background:#e2e8f0;
+
     border-radius:20px;
+
     overflow:hidden;
+
     margin:10px 0;
 }
 
 .progress div{
+
     height:100%;
+
     background:#22c55e;
 }
 
+
+/* =========================
+   PROFILE
+========================= */
+
 .profile{
+
     text-align:center;
 }
 
 .avatar{
+
     width:120px;
+
     height:120px;
+
     border-radius:50%;
+
     background:#dcfce7;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     font-size:65px;
-    margin:0 auto 15px;
+
+    margin:
+    0 auto 15px;
+}
+
+.name-input{
+
+    padding:12px;
+
+    border:
+    2px solid #22c55e;
+
+    border-radius:10px;
+
+    width:100%;
+
+    max-width:300px;
+
+    font-size:16px;
 }
 
 .xpbar{
+
     height:15px;
+
     background:#e2e8f0;
+
     border-radius:20px;
+
     overflow:hidden;
+
     margin:15px 0;
 }
 
 .xpbar div{
+
     height:100%;
+
     background:#22c55e;
 }
 
+
+/* =========================
+   SETTINGS
+========================= */
+
 .setting{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     background:var(--card);
+
     padding:20px;
+
     border-radius:15px;
+
     margin-bottom:12px;
 }
 
+
+/* =========================
+   MODAL
+========================= */
+
 .modal{
+
     position:fixed;
+
     inset:0;
+
     background:#0009;
+
     display:none;
+
     align-items:center;
+
     justify-content:center;
+
     z-index:2000;
+
     padding:20px;
 }
 
 .modal.show{
+
     display:flex;
 }
 
 .modal-box{
+
     background:var(--card);
+
     width:420px;
+
     max-width:100%;
+
     border-radius:20px;
+
     padding:25px;
+
     text-align:center;
 }
 
+
+/* =========================
+   TOAST
+========================= */
+
 .toast{
+
     position:fixed;
+
     right:20px;
+
     bottom:20px;
+
     background:#172033;
+
     color:white;
+
     padding:15px 20px;
+
     border-radius:12px;
+
     display:none;
+
     z-index:3000;
 }
 
 .toast.show{
+
     display:block;
 }
 
-.name-input{
-    padding:12px;
-    border:2px solid #22c55e;
-    border-radius:10px;
-    width:100%;
-    max-width:300px;
-    font-size:16px;
-}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:900px){
 
     .layout{
+
         display:block;
     }
 
     .sidebar{
+
         width:100%;
+
         display:flex;
+
         overflow-x:auto;
+
         gap:5px;
     }
 
     .sidebar button{
+
         min-width:max-content;
     }
 
     .grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .quick-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .inventory-grid{
-        grid-template-columns:repeat(3,1fr);
+
+        grid-template-columns:
+        repeat(3,1fr);
     }
 
     .farm{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+        repeat(2,1fr);
     }
 }
 
 @media(max-width:600px){
 
     header{
+
         flex-direction:column;
+
         align-items:flex-start;
     }
 
     .grid{
+
         grid-template-columns:1fr;
     }
 
     .inventory-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .main{
+
         padding:15px;
     }
+
+    .welcome h1{
+
+        font-size:28px;
+    }
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div id="loginScreen">
+
+<div class="login-box">
+
+<div class="login-logo">
+🌱
+</div>
+
+<h1>FarmLife</h1>
+
+<p>
+Masuk ke dunia perkebunanmu
+</p>
+
+
+<input
+id="loginName"
+class="login-input"
+type="text"
+placeholder="👤 Nama pengguna"
+maxlength="20"
+>
+
+
+<input
+id="loginPassword"
+class="login-input"
+type="password"
+placeholder="🔒 Password"
+>
+
+
+<button
+class="login-button"
+onclick="login()">
+
+🚜 MASUK KE FARM
+
+</button>
+
+
+<div class="login-info">
+
+Login sederhana untuk game.
+<br>
+Data disimpan di browser perangkatmu.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-    <div class="logo">
-        🌱 Farm<span>Life</span>
-    </div>
+<div class="logo">
 
-    <div class="player-info">
+🌱 Farm<span>Life</span>
 
-        <div class="stat">
-            👤 <span id="headerName">Petani</span>
-        </div>
+</div>
 
-        <div class="stat">
-            💰 <span id="money">500</span>
-        </div>
 
-        <div class="stat">
-            ⭐ Level <span id="level">1</span>
-        </div>
+<div class="player-info">
 
-        <div class="stat">
-            ⚡ <span id="energy">100</span>
-        </div>
+<div class="stat">
 
-    </div>
+👤
+<span id="headerName">
+Petani
+</span>
+
+</div>
+
+
+<div class="stat">
+
+💰
+<span id="money">
+500
+</span>
+
+</div>
+
+
+<div class="stat">
+
+⭐ Level
+<span id="level">
+1
+</span>
+
+</div>
+
+
+<div class="stat">
+
+⚡
+<span id="energy">
+100
+</span>
+
+</div>
+
+</div>
 
 </header>
 
 
+
 <div class="layout">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
 <aside class="sidebar">
 
-<button class="active" onclick="page('home',this)">🏡 Beranda</button>
-<button onclick="page('farm',this)">🌾 Kebun</button>
-<button onclick="page('shop',this)">🛒 Toko</button>
-<button onclick="page('inventory',this)">🎒 Inventori</button>
-<button onclick="page('market',this)">💰 Pasar</button>
-<button onclick="page('animals',this)">🐄 Peternakan</button>
-<button onclick="page('pond',this)">🐟 Kolam</button>
-<button onclick="page('quests',this)">🏆 Misi</button>
-<button onclick="page('daily',this)">🎁 Hadiah</button>
-<button onclick="page('profile',this)">👤 Profil</button>
-<button onclick="page('settings',this)">⚙️ Pengaturan</button>
-<button onclick="page('about',this)">ℹ️ Tentang</button>
+<button
+class="active"
+onclick="page('home',this)">
+
+🏡 Beranda
+
+</button>
+
+
+<button
+onclick="page('farm',this)">
+
+🌾 Kebun
+
+</button>
+
+
+<button
+onclick="page('shop',this)">
+
+🛒 Toko
+
+</button>
+
+
+<button
+onclick="page('inventory',this)">
+
+🎒 Inventori
+
+</button>
+
+
+<button
+onclick="page('market',this)">
+
+💰 Pasar
+
+</button>
+
+
+<button
+onclick="page('animals',this)">
+
+🐄 Peternakan
+
+</button>
+
+
+<button
+onclick="page('pond',this)">
+
+🐟 Kolam
+
+</button>
+
+
+<button
+onclick="page('quests',this)">
+
+🏆 Misi
+
+</button>
+
+
+<button
+onclick="page('daily',this)">
+
+🎁 Hadiah
+
+</button>
+
+
+<button
+onclick="page('profile',this)">
+
+👤 Profil
+
+</button>
+
+
+<button
+onclick="page('settings',this)">
+
+⚙️ Pengaturan
+
+</button>
+
+
+<button
+onclick="page('about',this)">
+
+ℹ️ Tentang
+
+</button>
 
 </aside>
+
 
 
 <main class="main">
 
 
-<!-- BERANDA -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-<section id="home" class="page active">
+<section
+id="home"
+class="page active"
+>
 
 <div class="welcome">
 
 <h1>
+
 Selamat datang,
-<span id="welcomeName">Petani</span>! 🌱
+<span id="welcomeName">
+Petani
+</span>! 🌱
+
 </h1>
 
 <p>
+
 Bangun perkebunan impianmu,
 tanam tanaman, rawat hewan,
 dan jadilah petani terbaik!
+
 </p>
 
 </div>
@@ -554,65 +1208,128 @@ dan jadilah petani terbaik!
 
 <div class="quick-grid">
 
-<div class="quick" onclick="page('farm')">
-<div class="emoji">🌾</div>
-<b>Kelola Kebun</b>
+
+<div
+class="quick"
+onclick="page('farm')">
+
+<div class="emoji">
+🌾
 </div>
 
-<div class="quick" onclick="page('shop')">
-<div class="emoji">🛒</div>
-<b>Belanja Bibit</b>
-</div>
-
-<div class="quick" onclick="page('market')">
-<div class="emoji">💰</div>
-<b>Jual Panen</b>
-</div>
-
-<div class="quick" onclick="page('quests')">
-<div class="emoji">🏆</div>
-<b>Lihat Misi</b>
-</div>
+<b>
+Kelola Kebun
+</b>
 
 </div>
+
+
+<div
+class="quick"
+onclick="page('shop')">
+
+<div class="emoji">
+🛒
+</div>
+
+<b>
+Belanja Bibit
+</b>
+
+</div>
+
+
+<div
+class="quick"
+onclick="page('market')">
+
+<div class="emoji">
+💰
+</div>
+
+<b>
+Jual Panen
+</b>
+
+</div>
+
+
+<div
+class="quick"
+onclick="page('quests')">
+
+<div class="emoji">
+🏆
+</div>
+
+<b>
+Lihat Misi
+</b>
+
+</div>
+
+</div>
+
 
 <br>
+
 
 <div class="grid">
 
+
 <div class="card">
 
-<h2>☀️ Cuaca</h2>
+<h2>
+☀️ Cuaca
+</h2>
+
 <br>
-<h1 id="homeWeather">Cerah ☀️</h1>
+
+<h1 id="homeWeather">
+Cerah ☀️
+</h1>
 
 </div>
 
+
 <div class="card">
 
-<h2>📊 Statistik</h2>
+<h2>
+📊 Statistik
+</h2>
+
 <br>
 
 <p>
 🌾 Panen:
-<b id="totalHarvest">0</b>
+<b id="totalHarvest">
+0
+</b>
 </p>
 
 <p>
 🐟 Ikan:
-<b id="totalFish">0</b>
+<b id="totalFish">
+0
+</b>
 </p>
 
 <p>
 🐄 Hewan:
-<b id="animalCount">2</b>
+<b id="animalCount">
+2
+</b>
 </p>
 
 </div>
 
+
 <div class="card">
 
-<h2>💡 Tips</h2>
+<h2>
+💡 Tips
+</h2>
+
 <br>
 
 <p id="tip">
@@ -626,13 +1343,21 @@ Jangan lupa menyiram tanaman!
 </section>
 
 
-<!-- KEBUN -->
 
-<section id="farm" class="page">
+<!-- =====================================================
+     FARM
+===================================================== -->
+
+<section
+id="farm"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🌾 Kebun Saya</h1>
+<h1>
+🌾 Kebun Saya
+</h1>
 
 <p>
 Klik petak untuk menanam.
@@ -640,6 +1365,7 @@ Klik tanaman siap panen untuk memanen.
 </p>
 
 </div>
+
 
 <div class="weather">
 
@@ -653,56 +1379,99 @@ Tanaman sedang tumbuh.
 
 </div>
 
-<div class="farm" id="farmGrid"></div>
+
+<div
+class="farm"
+id="farmGrid">
+</div>
 
 </section>
 
 
-<!-- TOKO -->
 
-<section id="shop" class="page">
+<!-- =====================================================
+     SHOP
+===================================================== -->
+
+<section
+id="shop"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🛒 Toko Bibit</h1>
+<h1>
+🛒 Toko Bibit
+</h1>
 
-<p>Beli bibit tanaman.</p>
+<p>
+Beli bibit tanaman.
+</p>
 
 </div>
 
-<div class="grid" id="shopGrid"></div>
+
+<div
+class="grid"
+id="shopGrid">
+</div>
 
 </section>
 
 
-<!-- INVENTORI -->
 
-<section id="inventory" class="page">
+<!-- =====================================================
+     INVENTORY
+===================================================== -->
+
+<section
+id="inventory"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🎒 Inventori</h1>
+<h1>
+🎒 Inventori
+</h1>
 
-<p>Hasil panen yang kamu miliki.</p>
+<p>
+Hasil panen yang kamu miliki.
+</p>
 
 </div>
 
-<div class="inventory-grid" id="inventoryGrid"></div>
+
+<div
+class="inventory-grid"
+id="inventoryGrid">
+</div>
 
 </section>
 
 
-<!-- PASAR -->
 
-<section id="market" class="page">
+<!-- =====================================================
+     MARKET
+===================================================== -->
+
+<section
+id="market"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>💰 Pasar</h1>
+<h1>
+💰 Pasar
+</h1>
 
-<p>Jual hasil panen.</p>
+<p>
+Jual hasil panen.
+</p>
 
 </div>
+
 
 <div class="card">
 
@@ -711,15 +1480,31 @@ Tanaman sedang tumbuh.
 <thead>
 
 <tr>
-<th>Tanaman</th>
-<th>Jumlah</th>
-<th>Harga</th>
-<th>Aksi</th>
+
+<th>
+Tanaman
+</th>
+
+<th>
+Jumlah
+</th>
+
+<th>
+Harga
+</th>
+
+<th>
+Aksi
+</th>
+
 </tr>
 
 </thead>
 
-<tbody id="marketTable"></tbody>
+
+<tbody
+id="marketTable">
+</tbody>
 
 </table>
 
@@ -728,31 +1513,50 @@ Tanaman sedang tumbuh.
 </section>
 
 
-<!-- PETERNAKAN -->
 
-<section id="animals" class="page">
+<!-- =====================================================
+     ANIMALS
+===================================================== -->
+
+<section
+id="animals"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🐄 Peternakan</h1>
+<h1>
+🐄 Peternakan
+</h1>
 
-<p>Rawat hewanmu.</p>
+<p>
+Rawat hewanmu.
+</p>
 
 </div>
 
+
 <div class="grid">
+
 
 <div class="card animal">
 
-<div class="animal-icon">🐄</div>
+<div class="animal-icon">
+🐄
+</div>
 
-<h2>Sapi</h2>
+<h2>
+Sapi
+</h2>
 
-<p>Menghasilkan susu.</p>
+<p>
+Menghasilkan susu.
+</p>
 
 <br>
 
-<button class="action primary"
+<button
+class="action primary"
 onclick="collectAnimal('sapi')">
 
 🥛 Ambil Susu
@@ -764,15 +1568,22 @@ onclick="collectAnimal('sapi')">
 
 <div class="card animal">
 
-<div class="animal-icon">🐔</div>
+<div class="animal-icon">
+🐔
+</div>
 
-<h2>Ayam</h2>
+<h2>
+Ayam
+</h2>
 
-<p>Menghasilkan telur.</p>
+<p>
+Menghasilkan telur.
+</p>
 
 <br>
 
-<button class="action primary"
+<button
+class="action primary"
 onclick="collectAnimal('ayam')">
 
 🥚 Ambil Telur
@@ -784,15 +1595,22 @@ onclick="collectAnimal('ayam')">
 
 <div class="card animal">
 
-<div class="animal-icon">🐑</div>
+<div class="animal-icon">
+🐑
+</div>
 
-<h2>Domba</h2>
+<h2>
+Domba
+</h2>
 
-<p>Menghasilkan wol.</p>
+<p>
+Menghasilkan wol.
+</p>
 
 <br>
 
-<button class="action primary"
+<button
+class="action primary"
 onclick="collectAnimal('domba')">
 
 🧶 Ambil Wol
@@ -806,23 +1624,38 @@ onclick="collectAnimal('domba')">
 </section>
 
 
-<!-- KOLAM -->
 
-<section id="pond" class="page">
+<!-- =====================================================
+     POND
+===================================================== -->
+
+<section
+id="pond"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🐟 Kolam Pemancingan</h1>
+<h1>
+🐟 Kolam Pemancingan
+</h1>
 
-<p>Gunakan energi untuk memancing.</p>
+<p>
+Gunakan energi untuk memancing.
+</p>
 
 </div>
 
+
 <div class="pond">
 
-<div class="fish">🐟</div>
+<div class="fish">
+🐟
+</div>
 
-<h2>Kolam Tenang</h2>
+<h2>
+Kolam Tenang
+</h2>
 
 <p>
 Siapa tahu dapat ikan langka!
@@ -844,40 +1677,69 @@ onclick="fish()">
 </section>
 
 
-<!-- MISI -->
 
-<section id="quests" class="page">
+<!-- =====================================================
+     QUEST
+===================================================== -->
+
+<section
+id="quests"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🏆 Misi</h1>
+<h1>
+🏆 Misi
+</h1>
 
-<p>Selesaikan misi.</p>
+<p>
+Selesaikan misi.
+</p>
 
 </div>
 
-<div id="questList"></div>
+
+<div id="questList">
+</div>
 
 </section>
 
 
-<!-- HADIAH -->
 
-<section id="daily" class="page">
+<!-- =====================================================
+     DAILY
+===================================================== -->
+
+<section
+id="daily"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>🎁 Hadiah Harian</h1>
+<h1>
+🎁 Hadiah Harian
+</h1>
 
-<p>Ambil hadiah setiap hari.</p>
+<p>
+Ambil hadiah setiap hari.
+</p>
 
 </div>
 
-<div class="card" style="text-align:center">
 
-<div style="font-size:100px">🎁</div>
+<div
+class="card"
+style="text-align:center">
 
-<h2>Hadiah Hari Ini</h2>
+<div style="font-size:100px">
+🎁
+</div>
+
+<h2>
+Hadiah Hari Ini
+</h2>
 
 <p>
 Dapatkan 💰250 gratis.
@@ -898,17 +1760,28 @@ onclick="dailyReward()">
 </section>
 
 
-<!-- PROFIL -->
 
-<section id="profile" class="page">
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+id="profile"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>👤 Profil Petani</h1>
+<h1>
+👤 Profil Petani
+</h1>
 
-<p>Atur nama pemainmu.</p>
+<p>
+Atur nama pemainmu.
+</p>
 
 </div>
+
 
 <div class="card profile">
 
@@ -916,20 +1789,25 @@ onclick="dailyReward()">
 👨‍🌾
 </div>
 
+
 <h2 id="playerName">
 Petani
 </h2>
 
 <br>
 
+
 <input
 id="nameInput"
 class="name-input"
 type="text"
 placeholder="Masukkan nama kamu"
-maxlength="20">
+maxlength="20"
+>
+
 
 <br><br>
+
 
 <button
 class="action primary"
@@ -939,37 +1817,61 @@ onclick="saveName()">
 
 </button>
 
+
 <br><br>
 
+
 <h3>
-⭐ Level <span id="profileLevel">1</span>
+⭐ Level
+<span id="profileLevel">
+1
+</span>
 </h3>
+
 
 <br>
 
+
 <p>
+
 XP:
-<span id="xpText">0 / 100</span>
+<span id="xpText">
+0 / 100
+</span>
+
 </p>
+
 
 <div class="xpbar">
 
-<div id="xpBar"
+<div
+id="xpBar"
 style="width:0%">
 </div>
 
 </div>
 
+
 <p>
+
 💰 Uang:
-<b id="profileMoney">500</b>
+<b id="profileMoney">
+500
+</b>
+
 </p>
+
 
 <br>
 
+
 <p>
+
 🌾 Total Panen:
-<b id="profileHarvest">0</b>
+<b id="profileHarvest">
+0
+</b>
+
 </p>
 
 </div>
@@ -977,24 +1879,43 @@ style="width:0%">
 </section>
 
 
-<!-- PENGATURAN -->
 
-<section id="settings" class="page">
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+id="settings"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>⚙️ Pengaturan</h1>
+<h1>
+⚙️ Pengaturan
+</h1>
 
-<p>Atur game.</p>
+<p>
+Atur game.
+</p>
 
 </div>
+
 
 <div class="setting">
 
 <div>
-<h3>🌙 Mode Gelap</h3>
-<p>Aktifkan tema gelap.</p>
+
+<h3>
+🌙 Mode Gelap
+</h3>
+
+<p>
+Aktifkan tema gelap.
+</p>
+
 </div>
+
 
 <button
 class="action primary"
@@ -1010,9 +1931,44 @@ Toggle
 <div class="setting">
 
 <div>
-<h3>💾 Reset Game</h3>
-<p>Hapus semua progress.</p>
+
+<h3>
+🚪 Keluar Akun
+</h3>
+
+<p>
+Kembali ke halaman login.
+</p>
+
 </div>
+
+
+<button
+class="action"
+style="background:#f59e0b;color:white"
+onclick="logout()">
+
+Keluar
+
+</button>
+
+</div>
+
+
+<div class="setting">
+
+<div>
+
+<h3>
+💾 Reset Game
+</h3>
+
+<p>
+Hapus semua progress.
+</p>
+
+</div>
+
 
 <button
 class="action danger"
@@ -1027,33 +1983,48 @@ Reset
 </section>
 
 
-<!-- TENTANG -->
 
-<section id="about" class="page">
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+id="about"
+class="page"
+>
 
 <div class="page-title">
 
-<h1>ℹ️ Tentang FarmLife</h1>
+<h1>
+ℹ️ Tentang FarmLife
+</h1>
 
 </div>
 
+
 <div class="card">
 
-<h2>🌱 FarmLife</h2>
+<h2>
+🌱 FarmLife
+</h2>
 
 <br>
 
 <p>
-FarmLife adalah game simulasi perkebunan
-berbasis web.
+
+FarmLife adalah game simulasi
+perkebunan berbasis web.
+
 </p>
 
 <br>
 
 <p>
+
 Tanam tanaman, panen, jual hasil,
 rawat hewan, memancing, menyelesaikan
 misi dan meningkatkan level.
+
 </p>
 
 <br>
@@ -1077,19 +2048,32 @@ Jadilah petani terkaya!
 </div>
 
 
-<!-- MODAL TANAM -->
 
-<div class="modal" id="plantModal">
+<!-- =====================================================
+     PLANT MODAL
+===================================================== -->
+
+<div
+class="modal"
+id="plantModal">
 
 <div class="modal-box">
 
-<h2>🌱 Tanam Tanaman</h2>
+<h2>
+🌱 Tanam Tanaman
+</h2>
 
-<p>Pilih bibit.</p>
+<p>
+Pilih bibit.
+</p>
 
-<div id="plantOptions"></div>
+
+<div id="plantOptions">
+</div>
+
 
 <br>
+
 
 <button
 class="action danger"
@@ -1104,22 +2088,176 @@ Batal
 </div>
 
 
-<div class="toast" id="toast">
+
+<div
+class="toast"
+id="toast">
+
 Berhasil!
+
 </div>
+
 
 
 <script>
 
-/* ================================
-   DATA GAME
-================================ */
+
+/* =====================================================
+   LOGIN SYSTEM
+===================================================== */
+
+let account =
+JSON.parse(
+localStorage.getItem("farmlifeAccount")
+);
+
+
+/* LOGIN */
+
+function login(){
+
+let name =
+document
+.getElementById("loginName")
+.value.trim();
+
+let password =
+document
+.getElementById("loginPassword")
+.value;
+
+
+if(name===""){
+
+alert(
+"Masukkan nama pengguna!"
+);
+
+return;
+
+}
+
+
+if(password===""){
+
+alert(
+"Masukkan password!"
+);
+
+return;
+
+}
+
+
+/*
+Jika akun belum ada,
+buat akun baru.
+*/
+
+if(!account){
+
+account={
+
+name:name,
+
+password:password
+
+};
+
+localStorage.setItem(
+"farmlifeAccount",
+JSON.stringify(account)
+);
+
+game.name=name;
+
+save();
+
+showGame();
+
+toast(
+"🎉 Akun berhasil dibuat!"
+);
+
+return;
+
+}
+
+
+/*
+Jika akun sudah ada,
+cek password.
+*/
+
+if(
+name!==account.name ||
+password!==account.password
+){
+
+alert(
+"❌ Nama atau password salah!"
+);
+
+return;
+
+}
+
+
+game.name=name;
+
+save();
+
+showGame();
+
+toast(
+"👋 Selamat datang kembali!"
+);
+
+}
+
+
+/* =========================
+   SHOW GAME
+========================= */
+
+function showGame(){
+
+document
+.getElementById("loginScreen")
+.style.display="none";
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+document
+.getElementById("loginScreen")
+.style.display="flex";
+
+document
+.getElementById("loginPassword")
+.value="";
+
+}
+
+
+/* =====================================================
+   GAME DATA
+===================================================== */
 
 let game =
-JSON.parse(localStorage.getItem("farmlife"))
+JSON.parse(
+localStorage.getItem("farmlife")
+)
 || {
 
-name:"Petani",
+name:
+account?.name || "Petani",
 
 money:500,
 
@@ -1156,9 +2294,9 @@ daily:false
 };
 
 
-/* ================================
-   TANAMAN
-================================ */
+/* =====================================================
+   CROPS
+===================================================== */
 
 const crops={
 
@@ -1201,9 +2339,9 @@ xp:25
 };
 
 
-/* ================================
+/* =====================================================
    SAVE
-================================ */
+===================================================== */
 
 function save(){
 
@@ -1213,50 +2351,62 @@ JSON.stringify(game)
 );
 
 updateUI();
+
 updateName();
 
 }
 
 
-/* ================================
+/* =====================================================
    TOAST
-================================ */
+===================================================== */
 
 function toast(message){
 
-let t=document.getElementById("toast");
+let t =
+document.getElementById("toast");
 
 t.innerText=message;
 
 t.classList.add("show");
 
 setTimeout(()=>{
+
 t.classList.remove("show");
+
 },2500);
 
 }
 
 
-/* ================================
+/* =====================================================
    NAVIGATION
-================================ */
+===================================================== */
 
 function page(id,button){
 
 document
 .querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
+.forEach(
+p=>p.classList.remove("active")
+);
+
 
 document
 .getElementById(id)
 .classList.add("active");
 
+
 document
 .querySelectorAll(".sidebar button")
-.forEach(b=>b.classList.remove("active"));
+.forEach(
+b=>b.classList.remove("active")
+);
+
 
 if(button)
 button.classList.add("active");
+
 
 if(id==="farm")
 renderFarm();
@@ -1274,14 +2424,15 @@ if(id==="quests")
 renderQuests();
 
 updateUI();
+
 updateName();
 
 }
 
 
-/* ================================
-   UPDATE UI
-================================ */
+/* =====================================================
+   UI
+===================================================== */
 
 function updateUI(){
 
@@ -1312,26 +2463,38 @@ document.getElementById("totalFish")
 document.getElementById("animalCount")
 .innerText=game.animals;
 
-let needed=game.level*100;
+
+let needed =
+game.level*100;
+
 
 document.getElementById("xpText")
-.innerText=
-game.xp+" / "+needed;
+.innerText =
+game.xp+
+" / "+
+needed;
+
 
 document.getElementById("xpBar")
-.style.width=
-Math.min(100,game.xp/needed*100)+"%";
+.style.width =
+Math.min(
+100,
+game.xp/needed*100
+)+"%";
 
 }
 
 
-/* ================================
-   NAMA PEMAIN
-================================ */
+/* =====================================================
+   NAME
+===================================================== */
 
 function updateName(){
 
-let name=game.name || "Petani";
+let name =
+game.name ||
+"Petani";
+
 
 document.getElementById("playerName")
 .innerText=name;
@@ -1342,7 +2505,8 @@ document.getElementById("welcomeName")
 document.getElementById("headerName")
 .innerText=name;
 
-let input=
+
+let input =
 document.getElementById("nameInput");
 
 if(input)
@@ -1353,43 +2517,66 @@ input.value=name;
 
 function saveName(){
 
-let input=
+let input =
 document.getElementById("nameInput");
 
-let name=
+let name =
 input.value.trim();
+
 
 if(name===""){
 
-toast("❌ Nama tidak boleh kosong!");
+toast(
+"❌ Nama tidak boleh kosong!"
+);
 
 return;
 
 }
 
+
 game.name=name;
+
+
+/*
+Update nama login juga
+*/
+
+if(account){
+
+account.name=name;
+
+localStorage.setItem(
+"farmlifeAccount",
+JSON.stringify(account)
+);
+
+}
+
 
 save();
 
 updateName();
 
 toast(
-"✅ Nama berhasil disimpan!"
+"✅ Nama berhasil diubah!"
 );
 
 }
 
 
-/* ================================
+/* =====================================================
    XP
-================================ */
+===================================================== */
 
 function addXP(amount){
 
 game.xp+=amount;
 
-let needed=
+
+let needed =
 game.level*100;
+
 
 if(game.xp>=needed){
 
@@ -1398,6 +2585,7 @@ game.xp-=needed;
 game.level++;
 
 game.money+=100;
+
 
 toast(
 "🎉 LEVEL UP! Level "+
@@ -1410,62 +2598,84 @@ game.level+
 }
 
 
-/* ================================
+/* =====================================================
    FARM
-================================ */
+===================================================== */
 
 function renderFarm(){
 
-let grid=
+let grid =
 document.getElementById("farmGrid");
 
 grid.innerHTML="";
 
-game.plots.forEach((plot,index)=>{
 
-let div=
+game.plots.forEach(
+(plot,index)=>{
+
+let div =
 document.createElement("div");
 
 div.className="plot";
+
 
 if(!plot){
 
 div.innerHTML=`
 
-<div class="plant">🌱</div>
+<div class="plant">
+🌱
+</div>
 
-<div>Tanam</div>
+<div>
+Tanam
+</div>
 
 `;
 
-div.onclick=
+div.onclick =
 ()=>openPlant(index);
 
 }else{
 
-let crop=crops[plot.type];
+let crop =
+crops[plot.type];
 
-let elapsed=
+
+let elapsed =
 (Date.now()-plot.planted)/1000;
 
-let ready=
+
+let ready =
 elapsed>=crop.time;
 
-let remaining=
+
+let remaining =
 Math.max(
 0,
-Math.ceil(crop.time-elapsed)
+Math.ceil(
+crop.time-elapsed
+)
 );
+
 
 div.innerHTML=`
 
 <div class="plant">
 
-${ready ? crop.emoji : "🌱"}
+${
+ready
+?
+crop.emoji
+:
+"🌱"
+}
 
 </div>
 
-<b>${crop.name}</b>
+<b>
+${crop.name}
+</b>
 
 <div class="timer">
 
@@ -1481,17 +2691,21 @@ ready
 
 `;
 
+
 div.onclick=()=>{
 
 if(ready)
 harvest(index);
 
 else
-toast("⏳ Belum siap dipanen!");
+toast(
+"⏳ Belum siap dipanen!"
+);
 
 };
 
 }
+
 
 grid.appendChild(div);
 
@@ -1500,9 +2714,9 @@ grid.appendChild(div);
 }
 
 
-/* ================================
-   MODAL TANAM
-================================ */
+/* =====================================================
+   PLANT
+===================================================== */
 
 let selectedPlot=null;
 
@@ -1511,26 +2725,36 @@ function openPlant(index){
 
 selectedPlot=index;
 
-let options=
-document.getElementById("plantOptions");
+
+let options =
+document.getElementById(
+"plantOptions"
+);
 
 options.innerHTML="";
 
-Object.keys(crops).forEach(type=>{
+
+Object.keys(crops)
+.forEach(type=>{
 
 let c=crops[type];
 
-let button=
-document.createElement("button");
+
+let button =
+document.createElement(
+"button"
+);
 
 button.className=
 "action primary";
+
 
 button.style.width="100%";
 
 button.style.marginTop="10px";
 
-button.innerText=
+
+button.innerText =
 c.emoji+
 " "+
 c.name+
@@ -1538,12 +2762,15 @@ c.name+
 game.seeds[type]+
 " bibit)";
 
-button.onclick=
+
+button.onclick =
 ()=>plant(type);
+
 
 options.appendChild(button);
 
 });
+
 
 document
 .getElementById("plantModal")
@@ -1565,23 +2792,30 @@ function plant(type){
 
 if(game.seeds[type]<=0){
 
-toast("❌ Bibit habis!");
+toast(
+"❌ Bibit habis!"
+);
 
 return;
 
 }
+
 
 if(game.energy<5){
 
-toast("⚡ Energi tidak cukup!");
+toast(
+"⚡ Energi tidak cukup!"
+);
 
 return;
 
 }
+
 
 game.seeds[type]--;
 
 game.energy-=5;
+
 
 game.plots[selectedPlot]={
 
@@ -1591,31 +2825,40 @@ planted:Date.now()
 
 };
 
+
 closeModal();
 
 save();
 
 renderFarm();
 
+
 toast(
-"🌱 "+crops[type].name+
+"🌱 "+
+crops[type].name+
 " berhasil ditanam!"
 );
 
 }
 
 
-/* ================================
-   PANEN
-================================ */
+/* =====================================================
+   HARVEST
+===================================================== */
 
 function harvest(index){
 
-let plot=game.plots[index];
+let plot =
+game.plots[index];
 
-if(!plot)return;
 
-let crop=crops[plot.type];
+if(!plot)
+return;
+
+
+let crop =
+crops[plot.type];
+
 
 game.crops[plot.type]++;
 
@@ -1623,39 +2866,52 @@ game.totalHarvest++;
 
 game.plots[index]=null;
 
+
 addXP(crop.xp);
 
 save();
 
 renderFarm();
 
+
 toast(
-"🌾 Panen "+crop.name+
-"! +"+crop.xp+" XP"
+"🌾 Panen "+
+crop.name+
+"! +"+
+crop.xp+
+" XP"
 );
 
 }
 
 
-/* ================================
+/* =====================================================
    SHOP
-================================ */
+===================================================== */
 
 function renderShop(){
 
-let grid=
-document.getElementById("shopGrid");
+let grid =
+document.getElementById(
+"shopGrid"
+);
 
 grid.innerHTML="";
 
-Object.keys(crops).forEach(type=>{
+
+Object.keys(crops)
+.forEach(type=>{
 
 let c=crops[type];
 
-let div=
-document.createElement("div");
+
+let div =
+document.createElement(
+"div"
+);
 
 div.className="item";
+
 
 div.innerHTML=`
 
@@ -1663,10 +2919,13 @@ div.innerHTML=`
 ${c.emoji}
 </div>
 
-<h3>${c.name}</h3>
+<h3>
+${c.name}
+</h3>
 
 <p>
-Tumbuh: ${c.time} detik
+Tumbuh:
+${c.time} detik
 </p>
 
 <p>
@@ -1684,6 +2943,7 @@ onclick="buySeed('${type}')">
 
 `;
 
+
 grid.appendChild(div);
 
 });
@@ -1695,47 +2955,62 @@ function buySeed(type){
 
 let c=crops[type];
 
+
 if(game.money<c.seedPrice){
 
-toast("❌ Uang tidak cukup!");
+toast(
+"❌ Uang tidak cukup!"
+);
 
 return;
 
 }
 
+
 game.money-=c.seedPrice;
 
 game.seeds[type]++;
 
+
 save();
 
+
 toast(
-"🌱 Membeli bibit "+c.name
+"🌱 Membeli bibit "+
+c.name
 );
 
 }
 
 
-/* ================================
+/* =====================================================
    INVENTORY
-================================ */
+===================================================== */
 
 function renderInventory(){
 
-let grid=
-document.getElementById("inventoryGrid");
+let grid =
+document.getElementById(
+"inventoryGrid"
+);
 
 grid.innerHTML="";
 
-Object.keys(crops).forEach(type=>{
+
+Object.keys(crops)
+.forEach(type=>{
 
 let c=crops[type];
 
-let div=
-document.createElement("div");
+
+let div =
+document.createElement(
+"div"
+);
 
 div.className=
 "inventory-item";
+
 
 div.innerHTML=`
 
@@ -1743,7 +3018,9 @@ div.innerHTML=`
 ${c.emoji}
 </div>
 
-<b>${c.name}</b>
+<b>
+${c.name}
+</b>
 
 <strong>
 ${game.crops[type]}
@@ -1755,6 +3032,7 @@ hasil panen
 
 `;
 
+
 grid.appendChild(div);
 
 });
@@ -1762,28 +3040,37 @@ grid.appendChild(div);
 }
 
 
-/* ================================
+/* =====================================================
    MARKET
-================================ */
+===================================================== */
 
 function renderMarket(){
 
-let table=
-document.getElementById("marketTable");
+let table =
+document.getElementById(
+"marketTable"
+);
 
 table.innerHTML="";
 
-Object.keys(crops).forEach(type=>{
+
+Object.keys(crops)
+.forEach(type=>{
 
 let c=crops[type];
 
-let tr=
-document.createElement("tr");
+
+let tr =
+document.createElement(
+"tr"
+);
+
 
 tr.innerHTML=`
 
 <td>
-${c.emoji} ${c.name}
+${c.emoji}
+${c.name}
 </td>
 
 <td>
@@ -1808,6 +3095,7 @@ Jual
 
 `;
 
+
 table.appendChild(tr);
 
 });
@@ -1819,17 +3107,22 @@ function sell(type){
 
 if(game.crops[type]<=0){
 
-toast("❌ Tidak punya hasil panen!");
+toast(
+"❌ Tidak punya hasil panen!"
+);
 
 return;
 
 }
 
+
 let c=crops[type];
+
 
 game.crops[type]--;
 
 game.money+=c.price;
+
 
 addXP(5);
 
@@ -1837,33 +3130,40 @@ save();
 
 renderMarket();
 
+
 toast(
-"💰 "+c.name+
+"💰 "+
+c.name+
 " terjual!"
 );
 
 }
 
 
-/* ================================
-   HEWAN
-================================ */
+/* =====================================================
+   ANIMALS
+===================================================== */
 
 function collectAnimal(type){
 
 if(game.energy<5){
 
-toast("⚡ Energi tidak cukup!");
+toast(
+"⚡ Energi tidak cukup!"
+);
 
 return;
 
 }
 
+
 game.energy-=5;
+
 
 let reward=30;
 
 let text="🥛 Susu";
+
 
 if(type==="ayam"){
 
@@ -1873,6 +3173,7 @@ text="🥚 Telur";
 
 }
 
+
 if(type==="domba"){
 
 reward=40;
@@ -1881,11 +3182,13 @@ text="🧶 Wol";
 
 }
 
+
 game.money+=reward;
 
 addXP(5);
 
 save();
+
 
 toast(
 text+
@@ -1896,49 +3199,68 @@ reward
 }
 
 
-/* ================================
-   MEMANCING
-================================ */
+/* =====================================================
+   FISH
+===================================================== */
 
 function fish(){
 
 if(game.energy<10){
 
-toast("⚡ Energi tidak cukup!");
+toast(
+"⚡ Energi tidak cukup!"
+);
 
 return;
 
 }
 
+
 game.energy-=10;
 
-let chance=Math.random();
+
+let chance =
+Math.random();
+
 
 let reward;
+
 
 if(chance<0.1){
 
 reward=200;
 
-toast("🐠 IKAN LANGKA! +💰200");
+toast(
+"🐠 IKAN LANGKA! +💰200"
+);
 
-}else if(chance<0.4){
+}
+
+else if(chance<0.4){
 
 reward=80;
 
-toast("🐟 Ikan besar! +💰80");
+toast(
+"🐟 Ikan besar! +💰80"
+);
 
-}else{
+}
+
+else{
 
 reward=30;
 
-toast("🐟 Mendapat ikan! +💰30");
+toast(
+"🐟 Mendapat ikan! +💰30"
+);
 
 }
+
 
 game.money+=reward;
 
 game.totalFish++;
+
 
 addXP(10);
 
@@ -1947,16 +3269,19 @@ save();
 }
 
 
-/* ================================
-   MISI
-================================ */
+/* =====================================================
+   QUEST
+===================================================== */
 
 function renderQuests(){
 
-let list=
-document.getElementById("questList");
+let list =
+document.getElementById(
+"questList"
+);
 
 list.innerHTML="";
+
 
 let quests=[
 
@@ -1983,37 +3308,53 @@ game.totalFish,
 
 ];
 
+
 quests.forEach(q=>{
 
 let current=q[2];
 
 let target=q[3];
 
-let percent=
+
+let percent =
 Math.min(
 100,
 current/target*100
 );
 
-let div=
-document.createElement("div");
+
+let div =
+document.createElement(
+"div"
+);
+
 
 div.className="quest";
 
+
 div.innerHTML=`
 
-<h3>${q[0]}</h3>
+<h3>
+${q[0]}
+</h3>
 
-<p>${q[1]}</p>
+<p>
+${q[1]}
+</p>
 
 <div class="progress">
 
-<div style="width:${percent}%"></div>
+<div
+style="width:${percent}%">
+</div>
 
 </div>
 
 <p>
-${Math.min(current,target)}
+${Math.min(
+current,
+target
+)}
 /
 ${target}
 </p>
@@ -2021,9 +3362,13 @@ ${target}
 <br>
 
 <b style="color:
-${current>=target
-?"#22c55e"
-:"#64748b"}">
+${
+current>=target
+?
+"#22c55e"
+:
+"#64748b"
+}">
 
 ${
 current>=target
@@ -2037,6 +3382,7 @@ current>=target
 
 `;
 
+
 list.appendChild(div);
 
 });
@@ -2044,9 +3390,9 @@ list.appendChild(div);
 }
 
 
-/* ================================
-   HADIAH
-================================ */
+/* =====================================================
+   DAILY
+===================================================== */
 
 function dailyReward(){
 
@@ -2060,13 +3406,16 @@ return;
 
 }
 
+
 game.money+=250;
 
 game.daily=true;
 
+
 addXP(20);
 
 save();
+
 
 toast(
 "🎁 Hadiah harian +💰250!"
@@ -2075,30 +3424,33 @@ toast(
 }
 
 
-/* ================================
+/* =====================================================
    DARK MODE
-================================ */
+===================================================== */
 
 function darkMode(){
 
-document.body.classList.toggle("dark");
+document.body
+.classList.toggle("dark");
 
 }
 
 
-/* ================================
+/* =====================================================
    RESET
-================================ */
+===================================================== */
 
 function resetGame(){
 
 if(
 confirm(
-"Yakin ingin menghapus semua progress?"
+"Yakin ingin menghapus semua progress game?"
 )
 ){
 
-localStorage.removeItem("farmlife");
+localStorage.removeItem(
+"farmlife"
+);
 
 location.reload();
 
@@ -2107,38 +3459,49 @@ location.reload();
 }
 
 
-/* ================================
-   CUACA
-================================ */
+/* =====================================================
+   WEATHER
+===================================================== */
 
 function changeWeather(){
 
 let list=[
+
 "☀️ Cerah",
+
 "🌤️ Berawan",
+
 "🌧️ Hujan",
+
 "🌈 Pelangi"
+
 ];
 
-let weather=
+
+let weather =
 list[
 Math.floor(
-Math.random()*list.length
+Math.random()*
+list.length
 )
 ];
 
-document.getElementById("weather")
+
+document
+.getElementById("weather")
 .innerText=weather;
 
-document.getElementById("homeWeather")
+
+document
+.getElementById("homeWeather")
 .innerText=weather;
 
 }
 
 
-/* ================================
+/* =====================================================
    TIPS
-================================ */
+===================================================== */
 
 let tips=[
 
@@ -2154,18 +3517,21 @@ let tips=[
 
 ];
 
-document.getElementById("tip")
-.innerText=
+
+document
+.getElementById("tip")
+.innerText =
 tips[
 Math.floor(
-Math.random()*tips.length
+Math.random()*
+tips.length
 )
 ];
 
 
-/* ================================
-   UPDATE TANAMAN
-================================ */
+/* =====================================================
+   UPDATE FARM
+===================================================== */
 
 setInterval(()=>{
 
@@ -2183,9 +3549,9 @@ renderFarm();
 },1000);
 
 
-/* ================================
-   REGEN ENERGI
-================================ */
+/* =====================================================
+   ENERGY REGEN
+===================================================== */
 
 setInterval(()=>{
 
@@ -2200,9 +3566,9 @@ save();
 },10000);
 
 
-/* ================================
+/* =====================================================
    START
-================================ */
+===================================================== */
 
 renderFarm();
 
@@ -2219,6 +3585,20 @@ updateUI();
 updateName();
 
 changeWeather();
+
+
+/*
+Kalau sudah login sebelumnya,
+langsung masuk game.
+*/
+
+if(account){
+
+document
+.getElementById("loginScreen")
+.style.display="none";
+
+}
 
 </script>
 
